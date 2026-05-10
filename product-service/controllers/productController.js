@@ -44,3 +44,13 @@ exports.getProducts = async(req, res)=>{
         console.log(error)
     }
 }
+
+exports.productById = async(req, res)=>{
+    const{id} = req.params;
+    try {
+        const item= await Product.findById(id)
+        res.status(201).json({item})
+    } catch (error) {
+        console.log(error)
+    }
+}
