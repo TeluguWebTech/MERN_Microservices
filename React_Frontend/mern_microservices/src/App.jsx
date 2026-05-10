@@ -7,6 +7,7 @@ import LandingPage from './pages/LandingPage'
 import Login from './components/Login'
 import Cart from './components/Cart'
 import Products from './components/Products'
+import Confirmation from './components/Confirmation'
 
 const App = () => {
   const [userName, setUserName] = useState("")
@@ -18,7 +19,7 @@ const App = () => {
     const user = localStorage.getItem("username")
     setUserName(user)
   }
-console.log("home", name)
+
     const productRecord = (id,name, price )=>{
         setProId(id)
         setProName(name)
@@ -34,6 +35,7 @@ console.log("home", name)
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login loginAlert={loginAlert}/>} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/order' element={<Confirmation />} />
       </Routes>
 
     </div>

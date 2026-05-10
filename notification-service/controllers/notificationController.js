@@ -22,38 +22,66 @@ const transporter = nodemailer.createTransport({
 exports.sendOrderEmail = async (order) => {
 
     try {
+        const totalAmount =
+            order.productPrice * order.quantity;
+
 
         const mailOptions = {
 
             from: process.env.EMAIL_USER,
 
-            to: "kalyan.devtech@gmail.com",
+            to: order.email,
 
             subject: "Order Placed Successfully",
 
             html: `
 
-                <h2>Order Confirmation</h2>
+                <div style="font-family: Arial; padding:20px;">
 
-                <p>Your order has been placed successfully.</p>
+                    <h2 style="color:green;">
+                        Order Confirmation
+                    </h2>
 
-                <hr>
+                    <p>
+                        Your order has been placed successfully.
+                    </p>
 
-                <h3>Order Details</h3>
+                    <hr>
 
-                <p><b>Product:</b> ${order.productName}</p>
+                    <h3>Order Details</h3>
 
-                <p><b>Price:</b> ₹${order.productPrice}</p>
+                    <p>
+                        <b>Product:</b>
+                        ${order.productName}
+                    </p>
 
-                <p><b>Quantity:</b> ${order.quantity}</p>
+                    <p>
+                        <b>Price:</b>
+                        ₹${order.productPrice}
+                    </p>
 
-                <p><b>Total Amount:</b> ₹${order.totalAmount}</p>
+                    <p>
+                        <b>Quantity:</b>
+                        ${order.quantity}
+                    </p>
 
-                <p><b>Status:</b> ${order.orderStatus}</p>
+                    <p>
+                        <b>Total Amount:</b>
+                        ₹${totalAmount}
+                    </p>
 
-                <hr>
+                    <p>
+                        <b>Status:</b>
+                        ${order.orderStatus}
+                    </p>
 
-                <p>Thank you for shopping with us.</p>
+                    <hr>
+
+                    <p>
+                        Thank you for shopping with us.
+                    </p>
+
+                </div>
 
             `
         };

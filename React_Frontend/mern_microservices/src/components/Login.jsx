@@ -12,15 +12,15 @@ const Login = ({loginAlert}) => {
     const userLogin = async(e)=>{
         e.preventDefault()
         const userDetails = { email, password}
-        console.log(userDetails)
         try {
             const response = await axios.post(`${baseUrl}/auth/login`,userDetails)
             alert("login success")
             navigate("/")
             loginAlert()
-           
+            console.log(response.data)
             const authToken = response.data.token
             localStorage.setItem("token", authToken)
+            localStorage.setItem("email", response.data.email)
             localStorage.setItem("username", response.data.username)
             localStorage.setItem("userId", response.data.userId)
         } catch (error) {

@@ -7,7 +7,8 @@ const orderSchema = new mongoose.Schema({
         required: true
     },
 
-    productId: {
+    // ADD THIS
+    email: {
         type: String,
         required: true
     },

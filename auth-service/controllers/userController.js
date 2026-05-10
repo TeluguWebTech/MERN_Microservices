@@ -39,7 +39,7 @@ exports.userLogin = async(req, res)=>{
             {userId:user._id}, process.env.JWT_SECRET, {expiresIn:"1d"}
         )
          res.status(201).json({msg:"Login success", username:user.username,token, 
-            userId: user._id
+            userId: user._id, email:user.email
          })
     } catch (error) {
         res.status(500).json({msg:"something wrong"})

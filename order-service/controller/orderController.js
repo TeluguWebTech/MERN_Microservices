@@ -6,31 +6,33 @@ exports.placeOrder = async (req, res) => {
 
     try {
 
-        // User From JWT Middleware
         const userId = req.user.userId;
 
         const {
-            productId,
+            email,
             productName,
             productPrice,
             quantity
         } = req.body;
 
-        // Calculate Total
-        const totalAmount = productPrice * quantity;
+        const totalAmount =
+            productPrice * quantity;
 
-        // Create Order
         const order = await Order.create({
+
             userId,
-            productId,
+            email,
             productName,
             productPrice,
             quantity,
             totalAmount,
             orderStatus: "PLACED",
             paymentStatus: "PENDING"
+
         });
+
         await publishOrderEvent(order);
+
         res.status(201).json({
 
             msg: "Order placed successfully",
@@ -50,8 +52,8 @@ exports.placeOrder = async (req, res) => {
         });
 
     }
-};
 
+};
 // Get Orders
 exports.getOrders = async (req, res) => {
 
