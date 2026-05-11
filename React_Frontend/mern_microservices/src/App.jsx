@@ -8,6 +8,7 @@ import Login from './components/Login'
 import Cart from './components/Cart'
 import Products from './components/Products'
 import Confirmation from './components/Confirmation'
+import AddProduct from './pages/AddProduct'
 
 const App = () => {
   const [userName, setUserName] = useState("")
@@ -36,6 +37,7 @@ const App = () => {
         <Route path='/login' element={<Login loginAlert={loginAlert}/>} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/order' element={<Confirmation />} />
+        <Route path='/add-product' element={<AddProduct />} />
       </Routes>
 
     </div>

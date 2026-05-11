@@ -60,7 +60,7 @@ const Cart = () => {
     <div className='cartsection p-4 m-4'>
       {showCart.map((item)=>{
         return(
-          <div className="border border-amber-400 w-1/2 cartitems  p-8">
+          <div className=" w-1/2 cartitems  p-8">
            
             <div className="text-3xl">Product Name : {item.productName}</div>
             <div className="flex flex-wrap gap-24">
