@@ -2,9 +2,29 @@ const kafka = require("./client")
 
 const producer = kafka.producer();
 
-const connectProducer = async()=>{
-    await producer.connect();
-    console.log("kafka producer connected")
+const connectProducer = async () => {
+
+    let connected = false;
+
+    while (!connected) {
+
+        try {
+
+            await producer.connect();
+
+            console.log("kafka producer connected");
+
+            connected = true;
+
+        } catch (error) {
+
+            console.log("Kafka not ready... retrying in 5 seconds");
+
+            await new Promise((resolve) =>
+                setTimeout(resolve, 5000)
+            );
+        }
+    }
 }
 
 const publishOrderEvent = async(orderData)=>{
