@@ -65,6 +65,9 @@ services:
     ports:
       - "8002:8002"
 
+    env_file:
+      - ./cart-service/.env
+
 
   order-service:
     build: ./order-service
@@ -74,6 +77,9 @@ services:
 
     ports:
       - "8003:8003"
+    
+    env_file:
+      - ./order-service/.env
 
 
   notification-service:
