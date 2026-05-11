@@ -1,9 +1,12 @@
-const {Kafka} = require("kafkajs")
+const { Kafka } = require("kafkajs");
 
 const kafka = new Kafka({
-    clientId:"notification-service",
-    // brokers: ["127.0.0.1:9092"]
-    brokers:["kafka:9092"]
+    clientId: "notification-service",
+    brokers: ["kafka:9092"],
+    retry: {
+        initialRetryTime: 300,
+        retries: 10
+    }
 });
 
 module.exports = kafka;
