@@ -45,6 +45,9 @@ services:
     ports:
       - "8001:8001"
 
+    env_file:
+      - ./auth-service/.env
+
 
   product-service:
     build: ./product-service
