@@ -91,6 +91,9 @@ services:
     ports:
       - "8004:8004"
 
+    env_file:
+      - ./notification-service/.env
+
 
   frontend:
     build: ./React_Frontend/mern_microservices
