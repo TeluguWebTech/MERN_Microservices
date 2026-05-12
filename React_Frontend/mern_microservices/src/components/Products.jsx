@@ -37,36 +37,64 @@ const Products = () => {
         }
     }
 
-    return (
-        <div>
-            <section class="text-gray-600 body-font">
-                <div class="container px-5 py-10 mx-auto">
-                    <div class="flex flex-wrap -m-4 gap-2">
-                        {showPro.map((item) => {
-                            return (
-                                <div class="lg:w-1/4 md:w-1/2 p-4 w-full border border-amber-400 rounded-2xl">
-                                    <a class="block relative h-48 rounded overflow-hidden">
-                                        <img alt="ecommerce" class="object-contain object-center w-full h-full block" src={`${baseUrl}/products/uploads/${item.image}` }/>
-                                    </a>
-                                    <div class="mt-4">
-                                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">Rs.{item.price}</h3>
-                                        <div className="flex flex-wrap gap-36">
-                                        <h2 class="text-gray-900 title-font text-lg font-medium">{item.name}</h2>
-                                        {/* <p class="mt-1">{item.desc}</p> */}
-                                        <button className='border border-amber-600 '
-                                        onClick={()=>cartRecord(item._id, item.name, item.price)}
-                                        >Add to Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            )
-                        })}
+  return (
+    <div className="productsSection">
+
+        <div className="productsContainer">
+
+            {showPro.map((item) => {
+
+                return (
+
+                    <div className="productCard">
+
+                        <div className="productImageBox">
+
+                            <img
+                                className="productImage"
+                                src={`${baseUrl}/products/uploads/${item.image}`}
+                                alt=""
+                            />
+
+                        </div>
+
+                        <div className="productDetails">
+
+                            <div className="productPrice">
+                                Rs. {item.price}
+                            </div>
+
+                            <div className="productName">
+                                {item.name}
+                            </div>
+
+                            <div className="productDesc">
+                                {item.desc}
+                            </div>
+
+                            <button
+                                className="cartBtn"
+                                onClick={() =>
+                                    cartRecord(
+                                        item._id,
+                                        item.name,
+                                        item.price
+                                    )
+                                }
+                            >
+                                Add To Cart
+                            </button>
+
+                        </div>
 
                     </div>
-                </div>
-            </section>
+                )
+            })}
+
         </div>
-    )
+
+    </div>
+)
 }
 
 export default Products
